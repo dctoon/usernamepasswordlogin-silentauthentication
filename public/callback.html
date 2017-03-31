@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//cdn.auth0.com/js/auth0/8.5.0/auth0.min.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var origin = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+        var auth0 = new auth0.WebAuth({
+            domain: '{domain}',
+            clientID: '{clientID}'
+        });
+
+        auth0.parseHash(window.location.hash, function(err, result) {
+            window.parent.postMessage(err || result, origin);
+        });
+    </script>
+</body>
+
+</html>
